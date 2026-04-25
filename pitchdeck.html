@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Enn Panai Private Limited — Investor Pitch Deck 2026</title>
+
+<link href=https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap rel="stylesheet">
+
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+ 
+
+:root {
+
+  --sage:        #B8CDB8;
+
+  --sage-deep:   #4A7C59;
+
+  --sage-pale:   #E6EFE6;
+
+  --blush-deep:  #B8526A;
+
+  --butter-pale: #FDFAE8;
+
+  --butter-deep: #9E7A1A;
+
+  --lilac-pale:  #F0EDF8;
+
+  --lilac-deep:  #6B58A0;
+
+  --peach-pale:  #FDF3EC;
+
+  --peach-deep:  #C0623A;
+
+  --cream:       #FBF7F0;
+
+  --warm-white:  #FEFCF8;
+
+  --text-dark:   #1A2B1A;
+
+  --text-mid:    #2E4A2E;
+
+  --text-soft:   #4A6040;
+
+  --text-muted:  #7A9070;
+
+  --border:      rgba(80,120,80,0.15);
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+
+  --sans:  'DM Sans', sans-serif;
+
+}
+
+ 
+
+html, body {
+
+  width: 100%; height: 100%;
+
+  overflow: hidden;
+
+  font-family: var(--sans);
+
+  color: var(--text-dark);
+
+}
+
+ 
+
+/* ── DECK CONTAINER ── */
+
+.deck {
+
+  display: flex;
+
+  width: 100%; height: 100%;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+
+}
+
+.deck::-webkit-scrollbar { display: none; }
+
+ 
+
+/* ── SLIDE ── */
+
+.slide {
+
+  flex-shrink: 0;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  scroll-snap-align: start;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+}
+
+ 
+
+/* ── SLIDE BACKGROUNDS ── */
+
+.s-cover   { background: linear-gradient(135deg, #1A2B1A 0%, #2d6a4f 55%, #4A7C59 100%); }
+
+.s-problem { background: var(--cream); }
+
+.s-innov   { background: var(--sage-pale); }
+
+.s-traction{ background: var(--lilac-pale); }
+
+.s-invest  { background: var(--butter-pale); }
+
+.s-cta     { background: linear-gradient(135deg, #1A2B1A 0%, #2d4a2e 100%); }
+
+ 
+
+/* ── SLIDE INNER ── */
+
+.slide-inner {
+
+  padding: 5vw 7vw;
+
+  max-height: 100vh;
+
+  overflow: visible;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 0;
+
+}
+
+ 
+
+/* ── NAV ARROWS ── */
+
+.nav-arrow {
+
+  position: fixed; top: 50%; transform: translateY(-50%);
+
+  z-index: 200;
+
+  width: 52px; height: 52px; border-radius: 50%;
+
+  background: rgba(255,255,255,0.92);
+
+  border: 1px solid var(--border);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+
+  display: flex; align-items: center; justify-content: center;
+
+  cursor: pointer; transition: all 0.2s;
+
+  font-size: 1.2rem; color: var(--sage-deep);
+
+  user-select: none;
+
+}
+
+.nav-arrow:hover { background: white; box-shadow: 0 6px 28px rgba(0,0,0,0.18); }
+
+.nav-arrow.prev { left: 1.5rem; }
+
+.nav-arrow.next { right: 1.5rem; }
+
+.nav-arrow.hidden { opacity: 0; pointer-events: none; }
+
+ 
+
+/* ── DOT INDICATORS ── */
+
+.dots {
+
+  position: fixed; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
+
+  z-index: 200; display: flex; gap: 0.5rem; align-items: center;
+
+}
+
+.dot {
+
+  width: 7px; height: 7px; border-radius: 50%;
+
+  background: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.5);
+
+  cursor: pointer; transition: all 0.25s;
+
+}
+
+.dot.active { background: white; transform: scale(1.3); }
+
+.dot.dark { background: rgba(74,124,89,0.3); border-color: rgba(74,124,89,0.4); }
+
+.dot.dark.active { background: var(--sage-deep); }
+
+ 
+
+/* ── SLIDE COUNTER ── */
+
+.counter {
+
+  position: fixed; bottom: 1.8rem; right: 2rem; z-index: 200;
+
+  font-size: 0.6rem; letter-spacing: 0.15em; font-family: var(--sans);
+
+  color: rgba(255,255,255,0.5);
+
+}
+
+.counter.dark { color: var(--text-muted); }
+
+ 
+
+/* ── COVER SLIDE ── */
+
+.cover-eyebrow {
+
+  font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+
+  color: var(--sage); font-weight: 500; margin-bottom: 1.4rem;
+
+  display: flex; align-items: center; gap: 0.8rem;
+
+}
+
+.cover-eyebrow::before {
+
+  content: ''; display: inline-block; width: 32px; height: 1px; background: var(--sage);
+
+}
+
+.cover-title {
+
+  font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem);
+
+  font-weight: 300; color: white; line-height: 1.1; margin-bottom: 0.6rem;
+
+}
+
+.cover-title em { color: #74c69d; font-style: italic; }
+
+.cover-sub {
+
+  font-size: clamp(0.85rem, 1.5vw, 1rem); color: rgba(255,255,255,0.6);
+
+  font-weight: 300; line-height: 1.8; max-width: 520px; margin-bottom: 2.5rem;
+
+}
+
+.cover-pill {
+
+  display: inline-flex; align-items: center; gap: 0.6rem;
+
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+
+  border-radius: 100px; padding: 0.5rem 1.2rem; margin-bottom: 3rem;
+
+}
+
+.cover-pill span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 500; }
+
+.cover-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #74c69d; }
+
+ 
+
+.cover-brand {
+
+  font-family: var(--serif); font-size: 1rem; letter-spacing: 0.12em;
+
+  color: rgba(255,255,255,0.45); font-weight: 400;
+
+}
+
+ 
+
+/* ── SECTION HEADER STYLES ── */
+
+.overline {
+
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+
+  font-weight: 600; color: var(--sage-deep); display: block; margin-bottom: 0.5rem;
+
+}
+
+.overline-butter { color: var(--butter-deep); }
+
+.overline-lilac  { color: var(--lilac-deep); }
+
+.overline-peach  { color: var(--peach-deep); }
+
+ 
+
+.rule { height: 1px; width: 40px; background: var(--sage); margin-bottom: 1.2rem; }
+
+.rule-butter { background: var(--butter-deep); }
+
+.rule-lilac  { background: var(--lilac-deep); }
+
+ 
+
+.slide-title {
+
+  font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem);
+
+  font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem; color: var(--text-dark);
+
+}
+
+.slide-title em { font-style: italic; }
+
+ 
+
+.lead {
+
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--text-soft);
+
+  line-height: 1.75; max-width: 700px; margin-bottom: 1.5rem; font-weight: 300;
+
+}
+
+ 
+
+/* ── BULLET POINTS ── */
+
+.bullets { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.4rem; }
+
+.bullets li {
+
+  display: flex; align-items: flex-start; gap: 0.8rem;
+
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem); color: var(--text-mid); line-height: 1.55;
+
+}
+
+.bullets li::before {
+
+  content: ''; flex-shrink: 0; width: 6px; height: 6px;
+
+  border-radius: 50%; background: var(--sage-deep); margin-top: 0.45rem;
+
+}
+
+.bullets li strong { color: var(--text-dark); font-weight: 600; }
+
+ 
+
+/* ── STAT PILLS ROW ── */
+
+.stat-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+.stat-pill {
+
+  background: white; border: 1px solid var(--border);
+
+  border-radius: 12px; padding: 0.9rem 1.4rem;
+
+  display: flex; flex-direction: column; gap: 0.15rem;
+
+  min-width: 110px;
+
+}
+
+.stat-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: var(--sage-deep); line-height: 1; }
+
+.stat-lbl { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); font-weight: 500; }
+
+ 
+
+/* ── RECOGNITION BADGES ── */
+
+.badge-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+
+.badge {
+
+  background: white; border: 1px solid var(--border); border-radius: 8px;
+
+  padding: 0.6rem 1rem; font-size: 0.72rem; font-weight: 600; color: var(--text-mid);
+
+  letter-spacing: 0.04em;
+
+}
+
+ 
+
+/* ── INVESTMENT TABLE ── */
+
+.invest-header {
+
+  display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap;
+
+}
+
+.invest-total {
+
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem);
+
+  font-weight: 600; color: var(--butter-deep);
+
+}
+
+.invest-total-lbl {
+
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+
+  color: var(--text-muted); font-weight: 500;
+
+}
+
+ 
+
+.budget-table {
+
+  width: 100%; border-collapse: collapse;
+
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+
+}
+
+.budget-table th {
+
+  text-align: left; padding: 0.38rem 0.7rem;
+
+  font-size: 0.56rem; letter-spacing: 0.15em; text-transform: uppercase;
+
+  color: var(--text-muted); font-weight: 600;
+
+  border-bottom: 2px solid var(--border); background: rgba(255,255,255,0.6);
+
+}
+
+.budget-table td {
+
+  padding: 0.35rem 0.7rem; border-bottom: 1px solid var(--border);
+
+  color: var(--text-mid); vertical-align: top; line-height: 1.38;
+
+}
+
+.budget-table tr:hover td { background: rgba(255,255,255,0.5); }
+
+.budget-table .total-row td {
+
+  font-weight: 700; color: var(--text-dark); border-top: 2px solid var(--butter-deep);
+
+  border-bottom: none; background: rgba(255,255,255,0.7);
+
+}
+
+.budget-table .amount { font-family: var(--sans); font-weight: 600; white-space: nowrap; color: var(--text-dark); }
+
+.budget-table .total-row .amount { color: var(--butter-deep); font-size: 1.05em; }
+
+ 
+
+/* ── CTA SLIDE ── */
+
+.cta-eyebrow {
+
+  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+
+  color: var(--sage); font-weight: 500; margin-bottom: 1rem;
+
+}
+
+.cta-title {
+
+  font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.8rem);
+
+  font-weight: 300; color: white; line-height: 1.15; margin-bottom: 1.2rem;
+
+}
+
+.cta-title em { color: #74c69d; font-style: italic; }
+
+.cta-sub { font-size: 0.9rem; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.8; max-width: 500px; margin-bottom: 2rem; }
+
+.cta-link {
+
+  display: inline-flex; align-items: center; gap: 0.6rem;
+
+  background: var(--sage-deep); color: white; text-decoration: none;
+
+  padding: 0.9rem 2rem; border-radius: 100px;
+
+  font-size: 0.78rem; letter-spacing: 0.1em; font-weight: 600;
+
+  transition: background 0.2s, transform 0.15s;
+
+}
+
+.cta-link:hover { background: #3a6347; transform: translateY(-1px); }
+
+.cta-link svg { width: 14px; height: 14px; }
+
+ 
+
+.cta-contact {
+
+  display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+
+}
+
+.cta-contact-item { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.cta-contact-item span:first-child {
+
+  font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+
+  color: rgba(255,255,255,0.4); font-weight: 600;
+
+}
+
+.cta-contact-item span:last-child { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+
+ 
+
+/* ── WEBSITE PROMPT ── */
+
+.website-prompt {
+
+  display: inline-flex; align-items: center; gap: 0.5rem;
+
+  font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.05em;
+
+  border: 1px solid var(--border); border-radius: 100px;
+
+  padding: 0.4rem 1rem; text-decoration: none; transition: color 0.2s, border-color 0.2s;
+
+  align-self: flex-start;
+
+}
+
+.website-prompt:hover { color: var(--sage-deep); border-color: var(--sage-deep); }
+
+.website-prompt svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+ 
+
+/* ── TWO-COL LAYOUT ── */
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; align-items: start; }
+
+ 
+
+/* ── DECORATIVE BG NUMBER ── */
+
+.bg-num {
+
+  position: absolute; font-family: var(--serif); font-size: 22vw; font-weight: 300;
+
+  color: rgba(74,124,89,0.04); line-height: 1; right: 5vw; bottom: 5vh;
+
+  pointer-events: none; user-select: none;
+
+}
+
+.bg-num-light { color: rgba(255,255,255,0.04); }
+
+</style>
+
+</head>
+
+<body>
+
+ 
+
+<!-- ════ SLIDE DECK ════ -->
+
+<div class="deck" id="deck">
+
+ 
+
+  <!-- ── SLIDE 1: COVER ── -->
+
+  <div class="slide s-cover">
+
+    <div class="bg-num bg-num-light">EP</div>
+
+    <div class="slide-inner">
+
+      <div class="cover-eyebrow">Investor Pitch &nbsp;·&nbsp; 2026</div>
+
+      <h1 class="cover-title">Enn Panai<br><em>Private Limited</em></h1>
+
+      <p class="cover-sub">Transforming the Palmyra palm into the world's most extraordinary sustainable textile fibre — born in Viruppatchi, recognised in London.</p>
+
+      <div class="cover-pill">
+
+        <div class="cover-pill-dot"></div>
+
+        <span>Carbon-Negative &nbsp;·&nbsp; Women-Led &nbsp;·&nbsp; Patent-Protected</span>
+
+      </div>
+
+      <div class="cover-brand">Enn Panai<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#B8526A;margin:0 0.4rem;vertical-align:middle;"></span>Pvt. Ltd.</div>
+
+    </div>
+
+  </div>
+
+ 
+
+  <!-- ── SLIDE 2: PROBLEM & OPPORTUNITY ── -->
+
+  <div class="slide s-problem">
+
+    <div class="bg-num">02</div>
+
+    <div class="slide-inner">
+
+      <span class="overline">The Problem &amp; Opportunity</span>
+
+      <div class="rule"></div>
+
+      <h2 class="slide-title">Net Zero Is Not Enough.<br><em style="color:var(--sage-deep);">Fashion must regenerate.</em></h2>
+
+      <div class="two-col">
+
+        <div>
+
+          <ul class="bullets">
+
+            <li><strong>Cotton</strong> consumes 10,000 litres of water per kg of fibre produced</li>
+
+            <li><strong>Synthetic fibres</strong> are petrochemical-derived — non-biodegradable &amp; fossil-fuel dependent</li>
+
+            <li>Only <strong>6%</strong> of global textile fibre comes from non-cotton plant sources</li>
+
+            <li>The industry needs a <strong>carbon-negative, scalable, natural alternative</strong> — now</li>
+
+            <li>The Palmyra palm is a <strong>self-renewing, drought-resistant, zero-input crop</strong> — already growing across South India</li>
+
+          </ul>
+
+          <a href="https://manjus2012.github.io/EnnPanai/" class="website-prompt" target="_blank">
+
+            <svg viewBox="0 0 12 12" fill="none" xmlns=http://www.w3.org/2000/svg><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            Full details at www.ennpanai.com
+
+          </a>
+
+        </div>
+
+        <div>
+
+          <div class="stat-row" style="flex-direction:column;">
+
+            <div class="stat-pill">
+
+              <span class="stat-num">10K</span>
+
+              <span class="stat-lbl">Litres / kg cotton</span>
+
+            </div>
+
+            <div class="stat-pill">
+
+              <span class="stat-num">6%</span>
+
+              <span class="stat-lbl">Other plant fibre share</span>
+
+            </div>
+
+            <div class="stat-pill">
+
+              <span class="stat-num">0</span>
+
+              <span class="stat-lbl">Water inputs — Palmyra</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+
+  <!-- ── SLIDE 3: INNOVATION ── -->
+
+  <div class="slide s-innov">
+
+    <div class="bg-num">03</div>
+
+    <div class="slide-inner">
+
+      <span class="overline">Our Innovation</span>
+
+      <div class="rule"></div>
+
+      <h2 class="slide-title">Fibral<sup style="font-size:0.5em; vertical-align:super;">™</sup> — <em style="color:var(--sage-deep);">a new textile fibre</em><br>from an ancient tree</h2>
+
+      <div class="two-col">
+
+        <div>
+
+          <ul class="bullets">
+
+            <li><strong>Fibral</strong> — our proprietary Palmyra palm textile fibre, extracted from the leaf sheath of <em>Borassus flabellifer</em></li>
+
+            <li>Processed using <strong>100% chemical-free</strong> retting and scouring — zero toxic effluent</li>
+
+            <li>Produces <strong>apparel-grade yarn</strong> in intimate blend with cotton — soft, lustrous, durable</li>
+
+            <li>Patent filed: <strong>202341069370</strong> — protecting our proprietary extraction process</li>
+
+            <li>Entire production operated by <strong>women artisans</strong> of Viruppatchi, Tamil Nadu</li>
+
+          </ul>
+
+          <a href="https://manjus2012.github.io/EnnPanai/" class="website-prompt" target="_blank">
+
+            <svg viewBox="0 0 12 12" fill="none" xmlns=http://www.w3.org/2000/svg><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            Full details at www.ennpanai.com
+
+          </a>
+
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:0.8rem;">
+
+          <div style="background:white;border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);">
+
+            <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-bottom:0.4rem;">Carbon Profile</div>
+
+            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--text-dark);">Carbon-<em>Negative</em></div>
+
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;">Trees sequester CO₂ for 100+ years</div>
+
+          </div>
+
+          <div style="background:white;border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);">
+
+            <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-bottom:0.4rem;">Workforce</div>
+
+            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--text-dark);">100% <em>Women</em></div>
+
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;">All roles, all levels, all decisions</div>
+
+          </div>
+
+          <div style="background:white;border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);">
+
+            <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-bottom:0.4rem;">IP Status</div>
+
+            <div style="font-family:var(--serif);font-size:1.4rem;color:var(--text-dark);">Patent <em>Filed</em></div>
+
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;">202341069370 — process protected</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+
+  <!-- ── SLIDE 4: TRACTION ── -->
+
+  <div class="slide s-traction">
+
+    <div class="bg-num" style="color:rgba(107,88,160,0.04);">04</div>
+
+    <div class="slide-inner">
+
+      <span class="overline overline-lilac">Global Validation</span>
+
+      <div class="rule rule-lilac"></div>
+
+      <h2 class="slide-title">The world's most discerning voices<br><em style="color:var(--lilac-deep);">have already taken notice.</em></h2>
+
+      <div class="badge-row" style="margin-bottom:1.2rem;">
+
+        <div class="badge">🏆 WGSN Global Press Release</div>
+
+        <div class="badge">🎪 London Lifestyle Expo 2023</div>
+
+        <div class="badge">✂️ London Fashion Week</div>
+
+        <div class="badge">🛍 Selfridges London</div>
+
+        <div class="badge">🌍 Innovate UK</div>
+
+        <div class="badge">📱 App Store &amp; Play Store</div>
+
+      </div>
+
+      <ul class="bullets" style="max-width:680px;">
+
+        <li><strong>WGSN</strong> — the world's most influential trend intelligence platform (6,000+ brands, 100 countries) singled out Fibral as a pioneering natural innovation</li>
+
+        <li><strong>Selfridges London</strong> — product showcased and engaged for potential sourcing partnership</li>
+
+        <li><strong>Innovate UK</strong> — recognised as a sustainable innovation with export-readiness</li>
+
+        <li>Pilot of <strong>₹5 lakhs founder capital</strong> has already validated the end-to-end process: grove to yarn</li>
+
+        <li>Current pilot: <strong>250 kg fibre / extraction cycle</strong> — ready to scale 4× immediately</li>
+
+      </ul>
+
+      <a href="https://manjus2012.github.io/EnnPanai/" class="website-prompt" target="_blank" style="border-color:rgba(107,88,160,0.25);color:var(--lilac-deep);">
+
+        <svg viewBox="0 0 12 12" fill="none" xmlns=http://www.w3.org/2000/svg><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        Full details at www.ennpanai.com
+
+      </a>
+
+    </div>
+
+  </div>
+
+ 
+
+  <!-- ── SLIDE 5: THE INVESTMENT CASE ── -->
+
+  <div class="slide s-invest">
+
+    <div class="bg-num" style="color:rgba(158,122,26,0.05);">05</div>
+
+    <div class="slide-inner" style="justify-content:flex-start; padding-top:4vh; padding-bottom:4vh; overflow-y:auto; max-height:100vh;">
+
+      <span class="overline overline-butter">The Investment Case</span>
+
+      <div class="rule rule-butter"></div>
+
+      <div class="invest-header">
+
+        <h2 class="slide-title" style="margin-bottom:0;font-size:clamp(1.4rem,2.5vw,2.2rem);">A precise, purposeful<br><em style="color:var(--butter-deep);">deployment of capital</em></h2>
+
+        <div style="margin-left:auto;text-align:right;">
+
+          <div class="invest-total">₹29,00,000</div>
+
+          <div class="invest-total-lbl">Total Investment Sought</div>
+
+        </div>
+
+      </div>
+
+      <p class="lead" style="margin-bottom:0.6rem;font-size:0.78rem;">Every rupee is mapped to a specific, measurable outcome. This is the disciplined scale-up of a model that has already delivered global-standard results.</p>
+
+      <table class="budget-table">
+
+        <thead>
+
+          <tr>
+
+            <th style="width:26%">Investment Component</th>
+
+            <th style="width:50%">Strategic Purpose</th>
+
+            <th style="width:24%;text-align:right;">Amount</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>Collection &amp; Transport Infrastructure</td>
+
+            <td>Dedicated vehicles, climate-controlled storage, community collection centres across 3 villages — transforming dispersed collection into a scalable logistics network</td>
+
+            <td class="amount" style="text-align:right;">₹ 12,00,000</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Extraction Machinery</td>
+
+            <td>Semi-automated fibre extraction units — reducing physical strain, dramatically increasing throughput and quality consistency</td>
+
+            <td class="amount" style="text-align:right;">₹ 2,00,000</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Desizing &amp; Scouring Equipment</td>
+
+            <td>Chemical-free retting and scouring — enabling internationally certified apparel-grade standards without toxic effluent</td>
+
+            <td class="amount" style="text-align:right;">₹ 2,00,000</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Spinning Unit Charges</td>
+
+            <td>Ring-frame spinning optimised for cotton-palmyra intimate blend — the precise architecture that delivers our signature fabric handle and lustre</td>
+
+            <td class="amount" style="text-align:right;">₹ 2,00,000</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Sapling Nursery Programme</td>
+
+            <td>Seed-to-sapling cultivation centre — the backbone of our carbon-positive and circular economy credentials</td>
+
+            <td class="amount" style="text-align:right;">₹ 3,00,000</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Working Capital &amp; Employment</td>
+
+            <td>Six months of operational costs including salaries for 20 women employees — financial runway to self-sustaining revenue</td>
+
+            <td class="amount" style="text-align:right;">₹ 5,00,000</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Certification &amp; Compliance</td>
+
+            <td>GOTS organic, OEKO-TEX Standard 100, export trade compliance — credentials that unlock premium buyers in European &amp; North American markets</td>
+
+            <td class="amount" style="text-align:right;">₹ 3,00,000</td>
+
+          </tr>
+
+          <tr class="total-row">
+
+            <td><strong>Total Investment Requested</strong></td>
+
+            <td style="font-size:0.75rem;color:var(--text-muted);">Complete scale-up from pilot to commercial production — creating an enterprise that generates returns for investors, the community, and the planet</td>
+
+            <td class="amount" style="text-align:right;">₹ 29,00,000</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+ 
+
+  <!-- ── SLIDE 6: CTA ── -->
+
+  <div class="slide s-cta">
+
+    <div class="bg-num bg-num-light">→</div>
+
+    <div class="slide-inner">
+
+      <div class="cta-eyebrow">Next Steps</div>
+
+      <h2 class="cta-title">Ready to invest in<br><em>regenerative fashion?</em></h2>
+
+      <p class="cta-sub">Explore our full company profile — innovation, sustainability impact, team, financials, and vision — at our website.</p>
+
+      <a href="https://manjus2012.github.io/EnnPanai/" class="cta-link" target="_blank">
+
+        <svg viewBox="0 0 14 14" fill="none" xmlns=http://www.w3.org/2000/svg><circle cx="7" cy="7" r="6" stroke="white" stroke-width="1.2"/><path d="M5 7h4M7 5l2 2-2 2" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        Visit www.ennpanai.com
+
+      </a>
+
+      <div class="cta-contact">
+
+        <div class="cta-contact-item">
+
+          <span>Company</span>
+
+          <span>Enn Panai Private Limited</span>
+
+        </div>
+
+        <div class="cta-contact-item">
+
+          <span>Location</span>
+
+          <span>Viruppatchi, Tamil Nadu, India</span>
+
+        </div>
+
+        <div class="cta-contact-item">
+
+          <span>Patent</span>
+
+          <span>202341069370</span>
+
+        </div>
+
+        <div class="cta-contact-item">
+
+          <span>Investment Sought</span>
+
+          <span>₹ 29,00,000</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+
+</div><!-- /deck -->
+
+ 
+
+<!-- ── NAVIGATION ARROWS ── -->
+
+<button class="nav-arrow prev hidden" id="prevBtn" onclick="navigate(-1)" aria-label="Previous slide">&#8592;</button>
+
+<button class="nav-arrow next" id="nextBtn" onclick="navigate(1)" aria-label="Next slide">&#8594;</button>
+
+ 
+
+<!-- ── DOT INDICATORS ── -->
+
+<div class="dots" id="dots"></div>
+
+ 
+
+<!-- ── SLIDE COUNTER ── -->
+
+<div class="counter" id="counter">1 / 6</div>
+
+ 
+
+<script>
+
+const deck    = document.getElementById('deck');
+
+const prevBtn = document.getElementById('prevBtn');
+
+const nextBtn = document.getElementById('nextBtn');
+
+const dotsEl  = document.getElementById('dots');
+
+const counterEl = document.getElementById('counter');
+
+const slides  = document.querySelectorAll('.slide');
+
+const total   = slides.length;
+
+ 
+
+// Light slides use dark dots
+
+const darkSlides = new Set([1, 2, 3, 4]); // 0-indexed
+
+ 
+
+let current = 0;
+
+ 
+
+// Build dots
+
+slides.forEach((_, i) => {
+
+  const d = document.createElement('div');
+
+  d.className = 'dot' + (darkSlides.has(i) ? ' dark' : '') + (i === 0 ? ' active' : '');
+
+  d.addEventListener('click', () => goTo(i));
+
+  dotsEl.appendChild(d);
+
+});
+
+ 
+
+function updateUI() {
+
+  const dots = dotsEl.querySelectorAll('.dot');
+
+  dots.forEach((d, i) => {
+
+    d.classList.toggle('active', i === current);
+
+    d.className = 'dot' + (darkSlides.has(i) ? ' dark' : '') + (i === current ? ' active' : '');
+
+  });
+
+  prevBtn.classList.toggle('hidden', current === 0);
+
+  nextBtn.classList.toggle('hidden', current === total - 1);
+
+  counterEl.textContent = (current + 1) + ' / ' + total;
+
+  // counter text colour
+
+  counterEl.classList.toggle('dark', darkSlides.has(current));
+
+  // arrow bg on dark slides
+
+  [prevBtn, nextBtn].forEach(btn => {
+
+    btn.style.background = darkSlides.has(current) ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.15)';
+
+    btn.style.color = darkSlides.has(current) ? 'var(--sage-deep)' : 'white';
+
+    btn.style.border = darkSlides.has(current) ? '1px solid var(--border)' : '1px solid rgba(255,255,255,0.25)';
+
+  });
+
+}
+
+ 
+
+function goTo(idx) {
+
+  current = Math.max(0, Math.min(total - 1, idx));
+
+  deck.scrollTo({ left: current * window.innerWidth, behavior: 'smooth' });
+
+  updateUI();
+
+}
+
+ 
+
+function navigate(dir) { goTo(current + dir); }
+
+ 
+
+// Keyboard navigation
+
+document.addEventListener('keydown', e => {
+
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigate(-1);
+
+});
+
+ 
+
+// Sync dots on manual scroll
+
+deck.addEventListener('scroll', () => {
+
+  const idx = Math.round(deck.scrollLeft / window.innerWidth);
+
+  if (idx !== current) { current = idx; updateUI(); }
+
+}, { passive: true });
+
+ 
+
+updateUI();
+
+</script>
+
+</body>
+
+</html>
